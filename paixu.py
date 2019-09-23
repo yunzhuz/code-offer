@@ -33,22 +33,25 @@ def charu(array):
             print('每次排序后结果：',array)
 
 class kuaipai():
-    def quicksort(self,array,left,right):
-        if right > left:
-            k = function(array,left,right)
-            quicksort(array,left,k-1)
-            quicksort(array,k+1,right)
-        return array
-
-    def function(self,array,left,right):
-        k=array[right]
-        i = left -1
-        for j in range(left,right):
-            if array[j] <= k:
-                i+=1
-                array[i],array[j] = array[j],array[i]
-        array[i+1],array[right] = array[right],array[i]
-        return i+1
+    def quicksort(self,l,left,right):
+        if left < right:
+            k = self.function(l,left,right)
+            self.quicksort(l,left,k-1)
+            self.quicksort(l,k+1,right)
+        return l
+    def function(self,l,low,high):
+        left , right =  low , high
+        temp = l[left]
+        while left < right:
+            while l[left] <= temp:
+                left += 1
+            while l[right] > temp:
+                right -= 1
+            if left < right:
+                l[left] , l[right] = l[right] , l[left]
+        l[low] = l[right]
+        l[right] = temp
+        return right
             
 # print(kuaipai().quicksort([10,1,35,61,89,36,55],0,6))
 maopao([3,1,6,4,5,0])
